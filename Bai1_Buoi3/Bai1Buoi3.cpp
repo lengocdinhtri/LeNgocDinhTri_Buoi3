@@ -164,6 +164,20 @@ void XuatDongSoChan(int a[MAX][MAX], int m, int n) {
 		}
 	}
 }
+
+void SapXepTangTungDong(int a[MAX][MAX], int m, int n) {
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n - 1; j++) {
+			for (int k = j + 1; k < n; k++) {
+				if (a[i][j] > a[i][k]) {
+					int temp = a[i][j];
+					a[i][j] = a[i][k];
+					a[i][k] = temp;
+				}
+			}
+		}
+	}
+}
 int main() {
 	int m, n, k;
 	int a[MAX][MAX];
@@ -193,6 +207,12 @@ int main() {
 	XuatDiemYenNgua(a, m, n);
 
 	XuatDongSoChan(a, m, n);
+
+	SapXepTangTungDong(a, m, n);
+	printf("\nMa tran sau khi sap xep tang theo tung dong:\n");
+	XuatMaTran(a, m, n);
+
+	return 0;
 
 	return 0;
 }
