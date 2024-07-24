@@ -44,6 +44,31 @@ void PhanTuLonNhatTungCot(int a[MAX][MAX], int m, int n) {
 	}
 }
 
+void XuatDuongBien(int a[MAX][MAX], int m, int n) {
+	// Duong bien tren
+	for (int j = 0; j < n; j++) {
+		printf("%d\t", a[0][j]);
+	}
+	printf("\n");
+
+	// Duong bien duoi
+	for (int j = 0; j < n; j++) {
+		printf("%d\t", a[m - 1][j]);
+	}
+	printf("\n");
+
+	// Duong bien trai
+	for (int i = 0; i < m; i++) {
+		printf("%d\t", a[i][0]);
+	}
+	printf("\n");
+
+	// Duong bien phai
+	for (int i = 0; i < m; i++) {
+		printf("%d\t", a[i][n - 1]);
+	}
+	printf("\n");
+}
 int main() {
 	int m, n, k;
 	int a[MAX][MAX];
@@ -62,6 +87,9 @@ int main() {
 
 	printf("\nTong gia tri tung dong:\n");
 	TinhTongTungDong(a, m, n);
+
+	printf("\nCac phan tu thuoc cac duong bien:\n");
+	XuatDuongBien(a, m, n);
 
 	return 0;
 }
