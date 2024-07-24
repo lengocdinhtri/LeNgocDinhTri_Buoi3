@@ -32,6 +32,18 @@ void TinhTongTungDong(int a[MAX][MAX], int m, int n) {
 	}
 }
 
+void PhanTuLonNhatTungCot(int a[MAX][MAX], int m, int n) {
+	for (int j = 0; j < n; j++) {
+		int max = a[0][j];
+		for (int i = 1; i < m; i++) {
+			if (a[i][j] > max) {
+				max = a[i][j];
+			}
+		}
+		printf("Phan tu lon nhat cot %d: %d\n", j, max);
+	}
+}
+
 int main() {
 	int m, n, k;
 	int a[MAX][MAX];
