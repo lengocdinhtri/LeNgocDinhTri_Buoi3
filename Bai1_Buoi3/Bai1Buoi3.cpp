@@ -22,7 +22,15 @@ void XuatMaTran(int a[MAX][MAX], int m, int n) {
 	}
 }
 
-
+void TinhTongTungDong(int a[MAX][MAX], int m, int n) {
+	for (int i = 0; i < m; i++) {
+		int tong = 0;
+		for (int j = 0; j < n; j++) {
+			tong += a[i][j];
+		}
+		printf("Tong dong %d: %d\n", i, tong);
+	}
+}
 
 int main() {
 	int m, n, k;
@@ -39,6 +47,9 @@ int main() {
 
 	printf("Ma tran ngau nhien:\n");
 	XuatMaTran(a, m, n);
+
+	printf("\nTong gia tri tung dong:\n");
+	TinhTongTungDong(a, m, n);
 
 	return 0;
 }
