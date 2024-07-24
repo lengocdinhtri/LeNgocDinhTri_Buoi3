@@ -93,6 +93,28 @@ void XuatCucDai(int a[MAX][MAX], int m, int n) {
 	}
 	printf("\n");
 }
+
+int LaHoangHau(int a[MAX][MAX], int m, int n, int i, int j) {
+	for (int k = 0; k < m; k++) {
+		if (a[k][j] > a[i][j]) return 0;
+	}
+	for (int k = 0; k < n; k++) {
+		if (a[i][k] > a[i][j]) return 0;
+	}
+	return 1;
+}
+
+void XuatHoangHau(int a[MAX][MAX], int m, int n) {
+	printf("Cac phan tu hoang hau:\n");
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			if (LaHoangHau(a, m, n, i, j)) {
+				printf("%d\t", a[i][j]);
+			}
+		}
+	}
+	printf("\n");
+}
 int main() {
 	int m, n, k;
 	int a[MAX][MAX];
@@ -117,6 +139,7 @@ int main() {
 
 	XuatCucDai(a, m, n);
 
+	XuatHoangHau(a, m, n);
 
 	return 0;
 }
