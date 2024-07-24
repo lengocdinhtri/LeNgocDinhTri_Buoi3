@@ -115,6 +115,36 @@ void XuatHoangHau(int a[MAX][MAX], int m, int n) {
 	}
 	printf("\n");
 }
+
+int LaDiemYenNgua(int a[MAX][MAX], int m, int n, int i, int j) {
+	int maxHang = a[i][0];
+	for (int k = 1; k < n; k++) {
+		if (a[i][k] > maxHang) {
+			maxHang = a[i][k];
+		}
+	}
+
+	int minCot = a[0][j];
+	for (int k = 1; k < m; k++) {
+		if (a[k][j] < minCot) {
+			minCot = a[k][j];
+		}
+	}
+
+	return a[i][j] == maxHang && a[i][j] == minCot;
+}
+
+void XuatDiemYenNgua(int a[MAX][MAX], int m, int n) {
+	printf("Cac phan tu diem yen ngua:\n");
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			if (LaDiemYenNgua(a, m, n, i, j)) {
+				printf("%d\t", a[i][j]);
+			}
+		}
+	}
+	printf("\n");
+}
 int main() {
 	int m, n, k;
 	int a[MAX][MAX];
@@ -140,6 +170,8 @@ int main() {
 	XuatCucDai(a, m, n);
 
 	XuatHoangHau(a, m, n);
+
+	XuatDiemYenNgua(a, m, n);
 
 	return 0;
 }
