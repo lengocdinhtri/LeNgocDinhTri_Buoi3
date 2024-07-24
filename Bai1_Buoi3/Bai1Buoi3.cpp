@@ -145,6 +145,25 @@ void XuatDiemYenNgua(int a[MAX][MAX], int m, int n) {
 	}
 	printf("\n");
 }
+
+void XuatDongSoChan(int a[MAX][MAX], int m, int n) {
+	printf("Cac dong chi chua so chan:\n");
+	for (int i = 0; i < m; i++) {
+		int chiSoChan = 1;
+		for (int j = 0; j < n; j++) {
+			if (a[i][j] % 2 != 0) {
+				chiSoChan = 0;
+				break;
+			}
+		}
+		if (chiSoChan) {
+			for (int j = 0; j < n; j++) {
+				printf("%d\t", a[i][j]);
+			}
+			printf("\n");
+		}
+	}
+}
 int main() {
 	int m, n, k;
 	int a[MAX][MAX];
@@ -172,6 +191,8 @@ int main() {
 	XuatHoangHau(a, m, n);
 
 	XuatDiemYenNgua(a, m, n);
+
+	XuatDongSoChan(a, m, n);
 
 	return 0;
 }
