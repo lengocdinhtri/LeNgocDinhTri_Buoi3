@@ -69,6 +69,30 @@ void XuatDuongBien(int a[MAX][MAX], int m, int n) {
 	}
 	printf("\n");
 }
+
+int LaCucDai(int a[MAX][MAX], int m, int n, int i, int j) {
+	int dx[] = { -1, 1, 0, 0, -1, -1, 1, 1 };
+	int dy[] = { 0, 0, -1, 1, -1, 1, -1, 1 };
+	for (int k = 0; k < 8; k++) {
+		int ni = i + dx[k], nj = j + dy[k];
+		if (ni >= 0 && ni < m && nj >= 0 && nj < n && a[ni][nj] >= a[i][j]) {
+			return 0;
+		}
+	}
+	return 1;
+}
+
+void XuatCucDai(int a[MAX][MAX], int m, int n) {
+	printf("Cac phan tu cuc dai:\n");
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			if (LaCucDai(a, m, n, i, j)) {
+				printf("%d\t", a[i][j]);
+			}
+		}
+	}
+	printf("\n");
+}
 int main() {
 	int m, n, k;
 	int a[MAX][MAX];
@@ -90,6 +114,9 @@ int main() {
 
 	printf("\nCac phan tu thuoc cac duong bien:\n");
 	XuatDuongBien(a, m, n);
+
+	XuatCucDai(a, m, n);
+
 
 	return 0;
 }
