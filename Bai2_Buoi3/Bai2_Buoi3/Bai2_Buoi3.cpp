@@ -95,6 +95,31 @@ void SapXepZicZac(int n, int **a) {
 
 	free(temp);
 }
+
+void SapXepDuongCheoChinh(int n, int **a) {
+	int *temp = (int *)malloc(n * sizeof(int));
+	for (int i = 0; i < n; i++) {
+		temp[i] = a[i][i];
+	}
+
+	// Sắp xếp mảng 1 chiều
+	for (int i = 0; i < n - 1; i++) {
+		for (int j = i + 1; j < n; j++) {
+			if (temp[i] > temp[j]) {
+				int t = temp[i];
+				temp[i] = temp[j];
+				temp[j] = t;
+			}
+		}
+	}
+
+	// Gán lại các giá trị đã sắp xếp vào đường chéo chính
+	for (int i = 0; i < n; i++) {
+		a[i][i] = temp[i];
+	}
+
+	free(temp);
+}
 int main() {
 	int n;
 	printf("Nhap cap cua ma tran (n >= 5): ");
@@ -126,6 +151,14 @@ int main() {
 	printf("Ma tran sau khi sap xep zic-zac:\n");
 	XuatMaTran(n, a);
 
+	SapXepDuongCheoChinh(n, a);
+	printf("Ma tran sau khi sap xep duong cheo chinh tang dan:\n");
+	XuatMaTran(n, a);
+
+	for (int i = 0; i < n; i++) {
+		free(a[i]);
+	}
+	free(a);
 
 	return 0;
 }
