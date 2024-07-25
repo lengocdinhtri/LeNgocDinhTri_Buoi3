@@ -20,7 +20,13 @@ void XuatMaTran(int n, int **a) {
 	}
 }
 
-
+void XuatDuongCheoChinh(int n, int **a) {
+	printf("Cac phan tu tren duong cheo chinh: ");
+	for (int i = 0; i < n; i++) {
+		printf("%d ", a[i][i]);
+	}
+	printf("\n");
+}
 
 int main() {
 	int n;
@@ -41,6 +47,8 @@ int main() {
 
 	printf("Ma tran ngau nhien:\n");
 	XuatMaTran(n, a);
+
+	XuatDuongCheoChinh(n, a);
 
 	return 0;
 }
