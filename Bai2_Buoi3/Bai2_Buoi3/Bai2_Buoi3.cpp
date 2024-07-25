@@ -55,6 +55,46 @@ int TimMaxTamGiacTren(int n, int **a) {
 	}
 	return max;
 }
+
+void SapXepZicZac(int n, int **a) {
+	int *temp = (int *)malloc(n * n * sizeof(int));
+	int index = 0;
+
+	// Chuyển ma trận thành mảng 1 chiều
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			temp[index++] = a[i][j];
+		}
+	}
+
+	// Sắp xếp mảng 1 chiều
+	for (int i = 0; i < n * n - 1; i++) {
+		for (int j = i + 1; j < n * n; j++) {
+			if (temp[i] > temp[j]) {
+				int t = temp[i];
+				temp[i] = temp[j];
+				temp[j] = t;
+			}
+		}
+	}
+
+	// Chuyển mảng 1 chiều trở lại ma trận theo kiểu zic-zac
+	index = 0;
+	for (int i = 0; i < n; i++) {
+		if (i % 2 == 0) {
+			for (int j = 0; j < n; j++) {
+				a[i][j] = temp[index++];
+			}
+		}
+		else {
+			for (int j = n - 1; j >= 0; j--) {
+				a[i][j] = temp[index++];
+			}
+		}
+	}
+
+	free(temp);
+}
 int main() {
 	int n;
 	printf("Nhap cap cua ma tran (n >= 5): ");
@@ -81,6 +121,11 @@ int main() {
 
 	int max = TimMaxTamGiacTren(n, a);
 	printf("Phan tu lon nhat thuoc tam giac tren cua duong cheo chinh: %d\n", max);
+
+	SapXepZicZac(n, a);
+	printf("Ma tran sau khi sap xep zic-zac:\n");
+	XuatMaTran(n, a);
+
 
 	return 0;
 }
