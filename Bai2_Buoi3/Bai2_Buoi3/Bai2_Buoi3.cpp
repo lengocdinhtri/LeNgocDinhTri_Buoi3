@@ -43,6 +43,18 @@ void XuatDuongCheoSongSong(int n, int **a) {
 		printf("\n");
 	}
 }
+
+int TimMaxTamGiacTren(int n, int **a) {
+	int max = a[0][1]; // Bắt đầu từ phần tử trên đường chéo chính
+	for (int i = 0; i < n; i++) {
+		for (int j = i + 1; j < n; j++) {
+			if (a[i][j] > max) {
+				max = a[i][j];
+			}
+		}
+	}
+	return max;
+}
 int main() {
 	int n;
 	printf("Nhap cap cua ma tran (n >= 5): ");
@@ -66,6 +78,9 @@ int main() {
 	XuatDuongCheoChinh(n, a);
 
 	XuatDuongCheoSongSong(n, a);
+
+	int max = TimMaxTamGiacTren(n, a);
+	printf("Phan tu lon nhat thuoc tam giac tren cua duong cheo chinh: %d\n", max);
 
 	return 0;
 }
