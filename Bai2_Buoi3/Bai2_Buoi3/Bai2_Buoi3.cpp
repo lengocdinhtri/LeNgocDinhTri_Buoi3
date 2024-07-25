@@ -28,6 +28,21 @@ void XuatDuongCheoChinh(int n, int **a) {
 	printf("\n");
 }
 
+void XuatDuongCheoSongSong(int n, int **a) {
+	printf("Cac phan tu tren cac duong cheo song song voi duong cheo chinh: \n");
+	for (int d = 1; d < n; d++) {
+		// Duong cheo tren duong cheo chinh
+		for (int i = 0; i < n - d; i++) {
+			printf("%d ", a[i][i + d]);
+		}
+		printf("\n");
+		// Duong cheo duoi duong cheo chinh
+		for (int i = 0; i < n - d; i++) {
+			printf("%d ", a[i + d][i]);
+		}
+		printf("\n");
+	}
+}
 int main() {
 	int n;
 	printf("Nhap cap cua ma tran (n >= 5): ");
@@ -49,6 +64,8 @@ int main() {
 	XuatMaTran(n, a);
 
 	XuatDuongCheoChinh(n, a);
+
+	XuatDuongCheoSongSong(n, a);
 
 	return 0;
 }
